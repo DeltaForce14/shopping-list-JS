@@ -190,31 +190,6 @@ function filterItems(event){
 }
 
 
-//Filtering throught the items entered
-function filterItems(event){
-    //grabbing value of text entered into filter field
-    //using toLowerCase in case the capslock in on so that it has no effect
-    const text = event.target.value.toLowerCase();
-
-    //grabbing all the list items
-    //querySelector returns nodes so we can use forEach
-    lis = document.querySelectorAll('.collection-item');
-    //itemL, content of the firstChild
-    //if there is no match of itemL and indexOf text it will return -1
-    //it will be looking for any text containing the typed letters
-    //if there is a match, display 'block', if there is not match, display 'none'.
-    lis.forEach(function(item){
-        const itemL = item.firstChild.textContent;
-        if(itemL.toLowerCase().indexOf(text) != -1){
-            item.style.display = 'block';
-        } else{
-            item.style.display = 'none'; 
-        }
-    })
-
-}
-
-
 
 
 
