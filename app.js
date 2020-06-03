@@ -117,30 +117,33 @@ function removeItem(event){
     if(event.target.parentElement.classList.contains('delete-item')){
         if(confirm("Are you sure?")){
         event.target.parentElement.parentElement.remove();
+
+        //remove from Local Storage
+        //passing the element that needs to be removed
+        removeTaskFromLocalStorage(event.target.parentElement.parentElement);
      }
-    };
+    }
+}
 
-    //remove from Local Storage
-    //passing the element that needs to be removed
-    removeItemFromLocalStorage(event.target.parentElement.parentElement);
-};
 
-function removeItemFromLocalStorage(itemMain){
+function removeTaskFromLocalStorage(itemMain){
+    
     let items = [];
     //check if storage is empty
+    
     if(localStorage.getItem('items') === null){
         items = [];
     }
     else {
         items = JSON.parse(localStorage.getItem('items'));
-    }
-
+    } 
+  
+    // using textContent of firstChild becase of Materialize and the bin icon
     items.forEach(function(item, index){
-        if(itemMain.textContent === item){
+        if(itemMain.firstChild.textContent === item){
             items.splice(index, 1);
         }
-
-    });
+    }); 
 
     localStorage.setItem('items', JSON.stringify(items))
 }
@@ -182,6 +185,7 @@ function filterItems(event){
     })
 
 }
+
 
 
 
