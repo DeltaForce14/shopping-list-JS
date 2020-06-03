@@ -163,7 +163,14 @@ function clearItems(){
 /* one option 
     itemList.innerHTML = "";
 */    
+    // delete all items from loccal storage
+    removeItemsFromLocalStorage();
 };
+
+//Delete Items from Local Storage Function
+function removeItemsFromLocalStorage(){
+    localStorage.clear();
+}
 
 //Filtering throught the items entered
 function filterItems(event){
